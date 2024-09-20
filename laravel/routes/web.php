@@ -91,6 +91,8 @@ Route::get('/klasifikasi-kerja', [App\Http\Controllers\KlasifikasiKerjaControlle
 			Route::get('/email', [App\Http\Controllers\EmailController::class, 'email'])->name('email');
 			Route::get('/email/edit/{id}', [App\Http\Controllers\EmailController::class, 'edit'])->name('email.edit');
 			Route::post('/email/update/{id}', [App\Http\Controllers\EmailController::class, 'update'])->name('email.update');
+
+			Route::get('/monitoring', [App\Http\Controllers\MonitoringController::class, 'monitoring'])->name('monitoring');
 			
 
 

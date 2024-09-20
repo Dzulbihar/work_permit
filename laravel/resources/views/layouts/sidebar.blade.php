@@ -46,19 +46,19 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{route('email')}}" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p> Master Email </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{route('profile')}}" class="nav-link">
+          <a href="{{route('monitoring')}}" class="nav-link {{ ($title ?? '') === "monitoring" ? 'active' : '' }}">
             <i class="nav-icon fas fa-th"></i>
             <p> Monitoring </p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{route('klasifikasi_kerja')}}" class="nav-link">
+          <a href="{{route('email')}}" class="nav-link {{ ($title ?? '') === "email" ? 'active' : '' }}">
+            <i class="nav-icon fas fa-th"></i>
+            <p> Master Email </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('klasifikasi_kerja')}}" class="nav-link {{ ($title ?? '') === "klasifikasi_kerja" ? 'active' : '' }}">
             <i class="nav-icon fas fa-th"></i>
             <p> Master Klasifikasi Kerja </p>
           </a>
@@ -82,12 +82,6 @@
           <a href="{{route('job')}}" class="nav-link {{ ($title ?? '') === "job" ? 'active' : '' }}">
             <i class="nav-icon fas fa-th"></i>
             <p> Pengajuan Izin Kerja </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('klasifikasi_kerja') }}" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>Master Klasifikasi Kerja</p>
           </a>
         </li>
         @endif
