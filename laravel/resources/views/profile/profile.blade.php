@@ -27,7 +27,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <!-- Profile Card -->
-            <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div class="card shadow-lg border-0 rounded-lg mt-0">
                 <div class="card-body">
                     <!-- Profil Pengguna dengan Gambar Background -->
                     <div class="profile-header text-center" style="height: 150px; background: url('{{ asset('logo/profile-bg.jpg') }}') no-repeat center center; background-size: cover;">
