@@ -171,7 +171,7 @@
            <form action="{{route('login')}}" method="post">
                @csrf
                <div class="header">
-                   <h3>Login</h3>
+                   <h3>Login </h3>
                </div>
                <h5 align="center">
                   <!-- Notifikasi ----------------------- -->
