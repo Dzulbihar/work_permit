@@ -173,7 +173,7 @@
     <div class="container">
         <div class="info-form-wrapper">
             <div class="info-box">
-                <h3>Informasi Register ... </h3>
+                <h3>Informasi Register baru </h3>
                 <p>Untuk mendaftar, silakan isi formulir di sebelah kanan dengan informasi yang benar dan lengkap.</p>
                 <ul>
                     <li>Nama Perusahaan</li>
