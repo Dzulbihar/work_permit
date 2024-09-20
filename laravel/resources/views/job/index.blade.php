@@ -111,8 +111,11 @@
 									    @endif
 									</td>
 									<td>
-										<embed type="application/pdf" src="{{$job->getDocument()}}" width="100%" height="100%"></embed>
+										<a href="{{ $job->getDocument() }}" target="_blank" class="btn btn-default btn-sm" title="Unduh PDF">
+											<i class="fas fa-file-pdf"></i> Unduh PDF
+										</a>
 									</td>
+									
 									<td> {{ $job->job_no}} </td>
 									<td>
 									    @if($job->job_class)
