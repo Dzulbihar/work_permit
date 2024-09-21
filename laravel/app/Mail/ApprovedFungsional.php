@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class JobApproved extends Mailable
+class ApprovedFungsional extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -33,11 +33,19 @@ class JobApproved extends Mailable
         //$sender = Auth::user()->name;
         $sender = 'Terminal Petikemas Semarang';
 
-        return $this->subject('Persetujuan Pekerjaan')
-                    ->view('emails.job_approved')
+        return $this->subject('Persetujuan Pekerjaan dari Fungsional TPKS')
+                    ->view('emails.approved_fungsional')
                     ->with([
-                        'jobName' => $this->job->job_name,
-                        'jobDesc' => $this->job->job_desc,
+                        'company' => $this->job->user->company,
+                        
+                        'job_name' => $this->job->job_name,
+                        'job_no' => $this->job->job_no,
+                        'location' => $this->job->location,
+                        'area' => $this->job->area,
+
+                        'start_work' => $this->job->start_work,
+                        'end_work' => $this->job->end_work,
+
                         'meetingDate' => $this->job->meeting_date,
                         'description' => $this->job->description,
                         'senderName' => $sender, 

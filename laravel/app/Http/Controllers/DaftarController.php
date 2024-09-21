@@ -60,7 +60,7 @@ class DaftarController extends Controller
         // Mendapatkan data user yang sedang login
         $user = auth()->user();
         $profile = $user->profile;
-        $title = "Profile";
+        $title = "profile";
 
         return view('profile.profile', compact('user', 'profile', 'title'));
     }
@@ -68,7 +68,8 @@ class DaftarController extends Controller
     public function editProfile()
     {
         $user = auth()->user();
-        return view('profile.edit', compact('user'));
+        $title = "profile";
+        return view('profile.edit', compact('user','title'));
     }
 
     public function updateProfile(Request $request)

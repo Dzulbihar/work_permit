@@ -10,20 +10,22 @@ class KlasifikasiKerjaController extends Controller
     // Menampilkan halaman utama Klasifikasi Kerja
     public function index()
     {
-        // Mengambil semua data klasifikasi kerja dari database
+        $title = "klasifikasi_kerja";
         $klasifikasiKerja = KlasifikasiKerja::all();
 
-        // Mengirim data ke view 'klasifikasi_kerja.index' dan memberikan judul halaman
         return view('klasifikasi_kerja.index', [
             'klasifikasiKerja' => $klasifikasiKerja,
-            'title' => 'Master Klasifikasi Kerja'
+            'title' => $title,
         ]);
     }
 
     // Menampilkan form untuk membuat klasifikasi kerja baru
     public function create()
     {
-        return view('klasifikasi_kerja.create', ['title' => 'Tambah Klasifikasi Kerja']);
+        $title = "klasifikasi_kerja";
+        return view('klasifikasi_kerja.create', [
+            'title' => $title,
+        ]);
     }
 
     // Menyimpan data klasifikasi kerja baru ke database
@@ -49,8 +51,13 @@ class KlasifikasiKerjaController extends Controller
     // Menampilkan halaman edit
     public function edit($id)
     {
+        $title = "klasifikasi_kerja";
         $klasifikasi = KlasifikasiKerja::findOrFail($id);
-        return view('klasifikasi.edit', compact('klasifikasi'));
+
+        return view('klasifikasi_kerja.edit', [
+            'klasifikasi' => $klasifikasi,
+            'title' => $title,
+        ]);
     }
 
     // Memperbarui data yang sudah ada

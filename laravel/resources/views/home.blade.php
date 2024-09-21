@@ -4,6 +4,6 @@
 
 @section('content')
 
-Haloooo
+Dashboard
 
 @endsection

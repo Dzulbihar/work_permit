@@ -86,7 +86,7 @@
 									    <a href="{{route('job.detail', $job->id)}}" class="btn btn-info btn-sm m-1" title="Daftar Anggota dan Alat">
 									        <i class="fas fa-clipboard-list"></i>
 									    </a>
-									    @if(!empty($job->meeting_date))
+									    @if(!empty($job->meeting_date) && $job->status == '2')
 									        <a href="{{ route('job.downloadPDF', $job->id) }}" rel="noopener" target="_blank" class="btn btn-default m-1" title="Unduh PDF">
 									            <i class="fas fa-file-pdf"></i>
 									        </a>
@@ -105,7 +105,7 @@
 									    @if($job->status == '0')
 									        <span class="badge badge-danger">Belum Disetujui HSSE</span>
 									    @elseif($job->status == '1')
-									        <span class="badge badge-success">Belum Disetujui Fungsional</span>
+									        <span class="badge badge-warning text-white">Belum Disetujui Fungsional</span>
 									    @elseif($job->status == '2')
 									        <span class="badge badge-success">Sudah Disetujui</span>
 									    @endif

@@ -32,7 +32,7 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        @if(auth()->user()->role == 'admin')
+        @if(auth()->user()->role == 'hsse' || auth()->user()->role == 'fungsional')
         <li class="nav-item">
           <a href="{{route('home')}}" class="nav-link {{ ($title ?? '') === "home" ? 'active' : '' }}">
             <i class="nav-icon fas fa-th"></i>

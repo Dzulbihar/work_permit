@@ -7,8 +7,12 @@ use App\Models\Job;
 use App\Models\Person;
 use App\Models\Tool;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\JobApproved;
+use App\Mail\ApprovedHsse;
+use App\Mail\ApprovedFungsional;
+use App\Mail\AgreementFungsional;
+use App\Mail\AgreementHsse;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Email;
 
 class JobDescController extends Controller
 {
@@ -32,12 +36,16 @@ class JobDescController extends Controller
         $job->status = '1';
         $job->save();
 
+        // Kirim email ke USER
         // Ambil email dari user yang terkait dengan job
         $userEmail = $job->user->email;
 
-        // Kirim email
         //Mail::to('ahmad.dzulbihar69@gmail.com')->send(new JobApproved($job));
-        Mail::to($userEmail)->send(new JobApproved($job));
+        Mail::to($userEmail)->send(new ApprovedHsse($job));
+
+        // Kirim email ke ADMIN
+        $email = Email::where('status', 'fungsional')->first()->email;
+        Mail::to($email)->send(new AgreementHsse($job));
 
         return redirect('/job_desc')->with('success', 'Data berhasil disetujui HSSE');
     }    
@@ -56,7 +64,11 @@ class JobDescController extends Controller
 
         // Kirim email
         //Mail::to('ahmad.dzulbihar69@gmail.com')->send(new JobApproved($job));
-        Mail::to($userEmail)->send(new JobApproved($job));
+        Mail::to($userEmail)->send(new ApprovedFungsional($job));
+
+        // Kirim email ke ADMIN
+        $email = Email::where('status', 'hsse')->first()->email;
+        Mail::to($email)->send(new AgreementFungsional($job));
 
         return redirect('/job_desc')->with('success', 'Data berhasil disetujui Fungsional');
     }  
@@ -110,7 +122,7 @@ class JobDescController extends Controller
 
     public function detail($id)
     {
-        $title = "job";
+        $title = "job_desc";
         $job = Job::find($id);
         $persons = Person::where('job_id', $id)->get();
         $tools = Tool::where('job_id', $id)->get();

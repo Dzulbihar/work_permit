@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Auth;
 
-class JobRequest extends Mailable
+class RequestUserHsse extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -34,13 +34,24 @@ class JobRequest extends Mailable
         $sender = Auth::user()->name;
 
         return $this->subject('Permintaan Persetujuan Pekerjaan')
-                    ->view('emails.job_request')
+                    ->view('emails.request_user_hsse')
                     ->with([
-                        'jobPT' => $this->job->user->name,
-                        'jobName' => $this->job->job_name,
-                        'jobDesc' => $this->job->job_desc,
+                        'company' => $this->job->user->company,
+                        'name' => $this->job->user->name,
+                        'npwp' => $this->job->user->npwp,
+                        'nohp' => $this->job->user->nohp,
+                        'email' => $this->job->user->email,
+
+                        'job_name' => $this->job->job_name,
+                        'job_no' => $this->job->job_no,
+                        'location' => $this->job->location,
+                        'area' => $this->job->area,
+
                         'jobStartWork' => $this->job->start_work,
                         'jobEndWork' => $this->job->end_work,
+
+                        'meetingDate' => $this->job->meeting_date,
+                        'description' => $this->job->description,
                         'senderName' => $sender, 
                     ]);
     }
