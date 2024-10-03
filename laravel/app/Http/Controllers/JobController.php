@@ -7,7 +7,9 @@ use App\Models\Job;
 use App\Models\Person;
 use App\Models\Tool;
 use App\Models\Tool2;
+use App\Models\Monitoring;
 use App\Models\Email;
+
 use Auth;
 use Illuminate\Support\Facades\DB; 
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -165,7 +167,8 @@ class JobController extends Controller
             'title' => $title,
             'job' => $job,
             'persons' => $persons,
-            'tools' => $tools
+            'tools' => $tools,
+            
         ]);
     }
 
@@ -176,14 +179,17 @@ class JobController extends Controller
         $persons = Person::where('job_id', $id)->get();
         $tools = Tool::where('job_id', $id)->get();
         $tools2 = Tool2::where('job_id', $id)->get();
-
+        $monitorings = Monitoring::where('job_id', $id)->get();
+        
         return view('job.detail',
             [
                 'title' => $title,
                 'job' => $job,
                 'persons' => $persons,
                 'tools' => $tools,
-                'tools2' => $tools2
+                'tools2' => $tools2,
+                'monitorings' => $monitorings,
+                
             ]);
     }   
 
@@ -216,5 +222,7 @@ class JobController extends Controller
 
         return redirect('/job')->with('success', 'Permintaan persetujuan berhasil dikirim ke Fungsional');
     }    
+
+
 
 }

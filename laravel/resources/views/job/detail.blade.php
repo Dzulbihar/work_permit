@@ -139,72 +139,58 @@
 						@endif
 					</p>
 					<hr>
-					<br>
-
-					<div class="row">
-						<div class="col-12">
-							<h4>Aktivitas Terkini</h4>
-							<div class="post">
-								<div class="user-block">
-									<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-									<span class="username">
-										<a href="#">Jonathan Burke Jr.</a>
-									</span>
-									<span class="description">Shared publicly - 7:45 PM today</span>
-								</div>
-								<!-- /.user-block -->
-								<p>
-									Lorem ipsum represents a long-held tradition for designers,
-									typographers and the like. Some people hate it and argue for
-									its demise, but others ignore.
-								</p>
-
-								<p>
-									<a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
-								</p>
-							</div>
-
-							<div class="post clearfix">
-								<div class="user-block">
-									<img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
-									<span class="username">
-										<a href="#">Sarah Ross</a>
-									</span>
-									<span class="description">Sent you a message - 3 days ago</span>
-								</div>
-								<!-- /.user-block -->
-								<p>
-									Lorem ipsum represents a long-held tradition for designers,
-									typographers and the like. Some people hate it and argue for
-									its demise, but others ignore.
-								</p>
-								<p>
-									<a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 2</a>
-								</p>
-							</div>
-
-							<div class="post">
-								<div class="user-block">
-									<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-									<span class="username">
-										<a href="#">Jonathan Burke Jr.</a>
-									</span>
-									<span class="description">Shared publicly - 5 days ago</span>
-								</div>
-								<!-- /.user-block -->
-								<p>
-									Lorem ipsum represents a long-held tradition for designers,
-									typographers and the like. Some people hate it and argue for
-									its demise, but others ignore.
-								</p>
-
-								<p>
-									<a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v1</a>
-								</p>
-							</div>
+				
+					
+					<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1>Monitoring</h1>
+						</div>
+						<div class="col-sm-6">
+						
 						</div>
 					</div>
 				</div>
+			</section>
+					
+					<!-- Tabel Monitoring -->
+					<div class="card">
+								<div class="card-header">
+									<h3 class="card-title"><b>Daftar Monitoring</b></h3>
+								</div>
+								<div class="card-body">
+									<table id="monitoringTable" class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>No</th>
+												<th>Nama</th>
+												<th>Lokasi</th>
+												<th>Tanggal</th>
+												<th>Status</th>
+												
+											</tr>
+										</thead>
+										<tbody>
+											<?php $nomer = 1; ?>
+											@foreach($monitorings as $monitoring)
+											<tr>
+												<th>{{ $nomer++ }}</th>
+												<td>{{ $monitoring->nama }}</td>
+												<td>{{ $monitoring->lokasi }}</td>
+												<td>{{ $monitoring->tanggal }}</td>
+												<td>{{ $monitoring->status }}</td>
+												
+											</tr>
+											@endforeach
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					
+				
 
 				<div class="col-12 col-md-12 col-lg-6 order-1 order-md-2">
 					<div class="row">
@@ -381,30 +367,30 @@
 										<span class="mt-0 text-muted"> Perlengkapan Keselamatan & Darurat </span>
 										<div class="row">
 											<div class="col-12 col-md-12 col-lg-12 order-1 order-md-2">
-											    <div class="form-check">
-											        <input type="checkbox" name="name[]" value="Pemadam_Api" id="Pemadam_Api" class="form-check-input">
-											        <label for="Pemadam_Api" class="form-check-label">Pemadam Api (APAR, Karung Goni Basah)</label>
-											    </div>
-											    <div class="form-check">
-											        <input type="checkbox" name="name[]" value="Safety_cone_line" id="Safety_cone_line" class="form-check-input">
-											        <label for="Safety_cone_line" class="form-check-label">Safety cone & line</label>
-											    </div>
-											    <div class="form-check">
-											        <input type="checkbox" name="name[]" value="Rambu_Tanda_Keselamatan" id="Rambu_Tanda_Keselamatan" class="form-check-input">
-											        <label for="Rambu_Tanda_Keselamatan" class="form-check-label">Rambu/Tanda Keselamatan</label>
-											    </div>
-											    <div class="form-check">
-											        <input type="checkbox" name="name[]" value="LOTO" id="LOTO" class="form-check-input">
-											        <label for="LOTO" class="form-check-label">LOTO (Lock Out Tag Out)</label>
-											    </div>
-											    <div class="form-check">
-											        <input type="checkbox" name="name[]" value="Radio_Telekomunikasi" id="Radio_Telekomunikasi" class="form-check-input">
-											        <label for="Radio_Telekomunikasi" class="form-check-label">Radio Telekomunikasi</label>
-											    </div>
-											    <div class="form-check">
-											        <input type="checkbox" name="name[]" value="Jaring_Tali_Keselamatan" id="Jaring_Tali_Keselamatan" class="form-check-input">
-											        <label for="Jaring_Tali_Keselamatan" class="form-check-label">Jaring Tali Keselamatan</label>
-											    </div>
+												<div class="form-check">
+													<input type="checkbox" name="name[]" value="Pemadam_Api" id="Pemadam_Api" class="form-check-input">
+													<label for="Pemadam_Api" class="form-check-label">Pemadam Api (APAR, Karung Goni Basah)</label>
+												</div>
+												<div class="form-check">
+													<input type="checkbox" name="name[]" value="Safety_cone_line" id="Safety_cone_line" class="form-check-input">
+													<label for="Safety_cone_line" class="form-check-label">Safety cone & line</label>
+												</div>
+												<div class="form-check">
+													<input type="checkbox" name="name[]" value="Rambu_Tanda_Keselamatan" id="Rambu_Tanda_Keselamatan" class="form-check-input">
+													<label for="Rambu_Tanda_Keselamatan" class="form-check-label">Rambu/Tanda Keselamatan</label>
+												</div>
+												<div class="form-check">
+													<input type="checkbox" name="name[]" value="LOTO" id="LOTO" class="form-check-input">
+													<label for="LOTO" class="form-check-label">LOTO (Lock Out Tag Out)</label>
+												</div>
+												<div class="form-check">
+													<input type="checkbox" name="name[]" value="Radio_Telekomunikasi" id="Radio_Telekomunikasi" class="form-check-input">
+													<label for="Radio_Telekomunikasi" class="form-check-label">Radio Telekomunikasi</label>
+												</div>
+												<div class="form-check">
+													<input type="checkbox" name="name[]" value="Jaring_Tali_Keselamatan" id="Jaring_Tali_Keselamatan" class="form-check-input">
+													<label for="Jaring_Tali_Keselamatan" class="form-check-label">Jaring Tali Keselamatan</label>
+												</div>
 											</div>  
 										</div>
 									</div>
@@ -520,30 +506,30 @@
 										<span class="mt-0 text-muted"> Perlengkapan Keselamatan & Darurat </span>
 										<div class="row">
 											<div class="col-12 col-md-12 col-lg-12 order-1 order-md-2">
-											    <div class="form-check">
-											        <input type="checkbox" name="name[]" value="Pemadam_Api" id="Pemadam_Api" class="form-check-input" {{ in_array('Pemadam_Api', explode(',', $tool->name)) ? 'checked' : '' }}>
-											        <label for="Pemadam_Api" class="form-check-label">Pemadam Api (APAR, Karung Goni Basah)</label>
-											    </div>
-											    <div class="form-check">
-											        <input type="checkbox" name="name[]" value="Safety_cone_line" id="Safety_cone_line" class="form-check-input" {{ in_array('Safety_cone_line', explode(',', $tool->name)) ? 'checked' : '' }}>
-											        <label for="Safety_cone_line" class="form-check-label">Safety cone & line</label>
-											    </div>
-											    <div class="form-check">
-											        <input type="checkbox" name="name[]" value="Rambu_Tanda_Keselamatan" id="Rambu_Tanda_Keselamatan" class="form-check-input" {{ in_array('Rambu_Tanda_Keselamatan', explode(',', $tool->name)) ? 'checked' : '' }}>
-											        <label for="Rambu_Tanda_Keselamatan" class="form-check-label">Rambu/Tanda Keselamatan</label>
-											    </div>
-											    <div class="form-check">
-											        <input type="checkbox" name="name[]" value="LOTO" id="LOTO" class="form-check-input" {{ in_array('LOTO', explode(',', $tool->name)) ? 'checked' : '' }}>
-											        <label for="LOTO" class="form-check-label">LOTO (Lock Out Tag Out)</label>
-											    </div>
-											    <div class="form-check">
-											        <input type="checkbox" name="name[]" value="Radio_Telekomunikasi" id="Radio_Telekomunikasi" class="form-check-input" {{ in_array('Radio_Telekomunikasi', explode(',', $tool->name)) ? 'checked' : '' }}>
-											        <label for="Radio_Telekomunikasi" class="form-check-label">Radio Telekomunikasi</label>
-											    </div>
-											    <div class="form-check">
-											        <input type="checkbox" name="name[]" value="Jaring_Tali_Keselamatan" id="Jaring_Tali_Keselamatan" class="form-check-input" {{ in_array('Jaring_Tali_Keselamatan', explode(',', $tool->name)) ? 'checked' : '' }}>
-											        <label for="Jaring_Tali_Keselamatan" class="form-check-label">Jaring Tali Keselamatan</label>
-											    </div>
+												<div class="form-check">
+													<input type="checkbox" name="name[]" value="Pemadam_Api" id="Pemadam_Api" class="form-check-input" {{ in_array('Pemadam_Api', explode(',', $tool->name)) ? 'checked' : '' }}>
+													<label for="Pemadam_Api" class="form-check-label">Pemadam Api (APAR, Karung Goni Basah)</label>
+												</div>
+												<div class="form-check">
+													<input type="checkbox" name="name[]" value="Safety_cone_line" id="Safety_cone_line" class="form-check-input" {{ in_array('Safety_cone_line', explode(',', $tool->name)) ? 'checked' : '' }}>
+													<label for="Safety_cone_line" class="form-check-label">Safety cone & line</label>
+												</div>
+												<div class="form-check">
+													<input type="checkbox" name="name[]" value="Rambu_Tanda_Keselamatan" id="Rambu_Tanda_Keselamatan" class="form-check-input" {{ in_array('Rambu_Tanda_Keselamatan', explode(',', $tool->name)) ? 'checked' : '' }}>
+													<label for="Rambu_Tanda_Keselamatan" class="form-check-label">Rambu/Tanda Keselamatan</label>
+												</div>
+												<div class="form-check">
+													<input type="checkbox" name="name[]" value="LOTO" id="LOTO" class="form-check-input" {{ in_array('LOTO', explode(',', $tool->name)) ? 'checked' : '' }}>
+													<label for="LOTO" class="form-check-label">LOTO (Lock Out Tag Out)</label>
+												</div>
+												<div class="form-check">
+													<input type="checkbox" name="name[]" value="Radio_Telekomunikasi" id="Radio_Telekomunikasi" class="form-check-input" {{ in_array('Radio_Telekomunikasi', explode(',', $tool->name)) ? 'checked' : '' }}>
+													<label for="Radio_Telekomunikasi" class="form-check-label">Radio Telekomunikasi</label>
+												</div>
+												<div class="form-check">
+													<input type="checkbox" name="name[]" value="Jaring_Tali_Keselamatan" id="Jaring_Tali_Keselamatan" class="form-check-input" {{ in_array('Jaring_Tali_Keselamatan', explode(',', $tool->name)) ? 'checked' : '' }}>
+													<label for="Jaring_Tali_Keselamatan" class="form-check-label">Jaring Tali Keselamatan</label>
+												</div>
 											</div>  
 										</div>
 										@endforeach 
@@ -559,9 +545,9 @@
 				</div>
 			</div>
 		</div>
-		<!-- /.card-body -->
+	<!-- /.card-body -->
 	</div>
-	<!-- /.card -->
+<!-- /.card -->
 
 </section>
 <!-- /.content -->

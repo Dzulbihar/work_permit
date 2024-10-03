@@ -45,12 +45,12 @@
             <p> Pengajuan Izin Kerja </p>
           </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="{{route('monitoring')}}" class="nav-link {{ ($title ?? '') === "monitoring" ? 'active' : '' }}">
             <i class="nav-icon fas fa-th"></i>
             <p> Monitoring </p>
           </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
           <a href="{{route('email')}}" class="nav-link {{ ($title ?? '') === "email" ? 'active' : '' }}">
             <i class="nav-icon fas fa-th"></i>
@@ -63,6 +63,13 @@
             <p> Master Klasifikasi Kerja </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{route('user.monitoring')}}" class="nav-link {{ ($title ?? '') === "user.monitoring" ? 'active' : '' }}">
+              <i class="nav-icon fas fa-th"></i>
+              <p> Master User  </p>
+          </a>
+      </li>
+      
         @endif
 
         @if(auth()->user()->role == 'user')

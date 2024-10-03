@@ -56,7 +56,15 @@ Route::group(['middleware' => ['auth']], function() {
 		Route::get('/tool/delete/{id}/{job_id}', [App\Http\Controllers\ToolController::class, 'delete'])->name('tool.delete');  
 
 		Route::post('/tool2/save/{id}', [App\Http\Controllers\Tool2Controller::class, 'save'])->name('tool2.save');	
-		Route::post('/tool2/update/{id}', [App\Http\Controllers\Tool2Controller::class, 'update'])->name('tool2.update');	
+		Route::post('/tool2/update/{id}', [App\Http\Controllers\Tool2Controller::class, 'update'])->name('tool2.update');
+		
+		Route::get('/user/monitoring', [YourController::class, 'showMonitoringForUser'])->name('user.monitoring');
+
+
+		 
+		 
+		 
+		 
 
 	});
 
@@ -72,11 +80,36 @@ Route::group(['middleware' => ['auth']], function() {
 		Route::get('job_desc/download-pdf/{id}', [App\Http\Controllers\JobDescController::class, 'downloadPDF'])->name('job_desc.downloadPDF');
 		Route::get('job_desc/print/{id}', [App\Http\Controllers\JobDescController::class, 'print'])->name('job_desc.print'); 
 
+	// Route untuk User Monitoring
+	Route::get('/user-monitoring', [App\Http\Controllers\UserMonitoringController::class, 'index'])->name('user.monitoring');
+
+
+		 //Route Monitoring
+
+		 Route::post('/monitorings/store', [App\Http\Controllers\JobDescController::class, 'store'])->name('monitorings.store');
+		 // Route untuk edit monitoring
+		 Route::get('/monitorings/{id}/edit', [App\Http\Controllers\JobDescController::class, 'edit'])->name('monitorings.edit');
+
+		 // Route untuk update monitoring
+		 Route::put('/monitorings/{id}', [App\Http\Controllers\JobDescController::class, 'update'])->name('monitorings.update');
+
+		 // Route untuk hapus monitoring
+		 Route::delete('/monitorings/{id}', [App\Http\Controllers\JobDescController::class, 'destroy'])->name('monitorings.destroy');
+
+		 Route::get('/job_desc/detail/{id}', [App\Http\Controllers\JobDescController::class, 'detail'])->name('job_desc.detail');
+
+
+
+
+
+
+
+
 		Route::get('/email', [App\Http\Controllers\EmailController::class, 'email'])->name('email');
 		Route::get('/email/edit/{id}', [App\Http\Controllers\EmailController::class, 'edit'])->name('email.edit');
 		Route::post('/email/update/{id}', [App\Http\Controllers\EmailController::class, 'update'])->name('email.update');
 
-		Route::get('/monitoring', [App\Http\Controllers\MonitoringController::class, 'monitoring'])->name('monitoring');
+		
 				
 		// Klasifikasi Kerja
 		Route::get('/klasifikasi-kerja', [App\Http\Controllers\KlasifikasiKerjaController::class, 'index'])->name('klasifikasi_kerja');

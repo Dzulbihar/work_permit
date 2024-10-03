@@ -83,7 +83,7 @@
 									            <i class="fas fa-paper-plane"></i>
 									        </a>
 									    @endif
-									    <a href="{{route('job.detail', $job->id)}}" class="btn btn-info btn-sm m-1" title="Daftar Anggota dan Alat">
+									    <a href="{{route('job.detail', $job->id)}}" class="btn btn-info btn-sm m-1" title="Detail">
 									        <i class="fas fa-clipboard-list"></i>
 									    </a>
 									    @if(!empty($job->meeting_date) && $job->status == '2')

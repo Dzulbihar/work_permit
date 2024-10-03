@@ -112,103 +112,201 @@
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="col-12">
-							<h4>Aktivitas Terkini</h4>
-							<div class="post">
-								<div class="user-block">
-									<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-									<span class="username">
-										<a href="#">Jonathan Burke Jr.</a>
-									</span>
-									<span class="description">Shared publicly - 7:45 PM today</span>
-								</div>
-								<!-- /.user-block -->
-								<p>
-									Lorem ipsum represents a long-held tradition for designers,
-									typographers and the like. Some people hate it and argue for
-									its demise, but others ignore.
-								</p>
-
-								<p>
-									<a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
-								</p>
-							</div>
-
-							<div class="post clearfix">
-								<div class="user-block">
-									<img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
-									<span class="username">
-										<a href="#">Sarah Ross</a>
-									</span>
-									<span class="description">Sent you a message - 3 days ago</span>
-								</div>
-								<!-- /.user-block -->
-								<p>
-									Lorem ipsum represents a long-held tradition for designers,
-									typographers and the like. Some people hate it and argue for
-									its demise, but others ignore.
-								</p>
-								<p>
-									<a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 2</a>
-								</p>
-							</div>
-
-							<div class="post">
-								<div class="user-block">
-									<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-									<span class="username">
-										<a href="#">Jonathan Burke Jr.</a>
-									</span>
-									<span class="description">Shared publicly - 5 days ago</span>
-								</div>
-								<!-- /.user-block -->
-								<p>
-									Lorem ipsum represents a long-held tradition for designers,
-									typographers and the like. Some people hate it and argue for
-									its demise, but others ignore.
-								</p>
-
-								<p>
-									<a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v1</a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-12 col-lg-6 order-1 order-md-2">
 					<h3 class="text-primary"><i class="fas fa-paint-brush"></i> 
 						{{ $job->job_name}} 
 					</h3>
 					<p class="text-muted">
-						{{ $job->job_desc}}
+						Lokasi : {{ $job->location}}
 					</p>
-					<br>
+					<p class="text-muted">
+						Area : {{ $job->area}}
+					</p>
+					Klasifikasi Pekerjaan : 
+					@if($job->job_class)
+					@php
+					// Memisahkan job_class berdasarkan koma
+					$job_classes = explode(',', $job->job_class);
+					@endphp
+					<ul>
+						@foreach($job_classes as $class)
+						<li>{{ str_replace('_', ' ', trim($class)) }}</li> <!-- Mengganti underscore dengan spasi -->
+						@endforeach
+					</ul>
+					@else
+					<span>-</span> <!-- Jika job_class kosong, tampilkan tanda strip atau pesan lainnya -->
+					@endif
+					
+					<!-- Content Header (Page header) -->
+					<section class="content-header">
+						<div class="container-fluid">
+							<div class="row mb-2">
+								<div class="col-sm-6">
+									<h1>Monitoring</h1>
+								</div>
+								<div class="col-sm-6">
 
-					<div class="row">
-						<div class="col-12 col-md-12 col-lg-6 order-1 order-md-2">
-							<h5 class="mt-5 text-muted"> Daftar Nama Anggota</h5>
-							<table id="example2" class="table table-bordered table-striped">
-								<thead>
-									<tr>
-										<th>No</th>
-										<th>Nama</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php $nomer = 1; ?>
-									@foreach($persons as $person)
-									<tr>
-										<th>{{ $nomer++}}</th>
-										<td> {{ $person->name}} </td>
-									</tr>
-									@endforeach 
-								</tbody>
-							</table>
+								</div>
+							</div>
+						</div>
+					</section>
+
+
+
+
+					<!-- Main content -->
+					<section class="content">
+						<div class="container-fluid">
+
+							<div class="row">
+
+								<div class="col-12">
+
+									<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahMonitoringModal">
+										Tambah Monitoring
+									</button>
+
+									<!-- Modal -->
+									<div class="modal fade" id="tambahMonitoringModal" tabindex="-1" role="dialog" aria-labelledby="tambahMonitoringModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="tambahMonitoringModalLabel">Tambah Data Monitoring</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<form action="{{ route('monitorings.store') }}" method="POST">
+														@csrf
+														<input type="hidden" name="job_id" value="{{ request()->route('id') }}">
+														<div class="form-group">
+															<label>Nama</label>
+															<input type="text" name="nama" class="form-control" required>
+														</div>
+														<div class="form-group">
+															<label>Lokasi</label>
+															<input type="text" name="lokasi" class="form-control" required>
+														</div>
+														<div class="form-group">
+															<label>Tanggal</label>
+															<input type="date" name="tanggal" class="form-control" required>
+														</div>
+														<div class="form-group">
+															<label>Status</label>
+															<input name="status" class="form-control" required>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+															<button type="submit" class="btn btn-primary">Tambah Data</button>
+														</div>
+
+													</form>
+												</div>
+
+											</div>
+										</div>
+									</div>
+
+									<!-- Tabel Monitoring -->
+									<div class="card">
+										<div class="card-header">
+											<h3 class="card-title"><b>Daftar Monitoring</b></h3>
+										</div>
+										<div class="card-body">
+											<table id="monitoringTable" class="table table-bordered table-striped">
+												<thead>
+													<tr>
+														<th>No</th>
+														<th>Nama</th>
+														<th>Lokasi</th>
+														<th>Tanggal</th>
+														<th>Status</th>
+														<th>Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php $nomer = 1; ?>
+													@foreach($monitorings as $monitoring)
+													<tr>
+														<th>{{ $nomer++ }}</th>
+														<td>{{ $monitoring->nama }}</td>
+														<td>{{ $monitoring->lokasi }}</td>
+														<td>{{ $monitoring->tanggal }}</td>
+														<td>{{ $monitoring->status }}</td>
+														<td>
+															<!-- Tombol Edit -->
+															<a href="{{ route('monitorings.edit', $monitoring->id) }}" class="btn btn-warning btn-sm">Edit</a>
+
+															<!-- Tombol Hapus -->
+															<form action="{{ route('monitorings.destroy', $monitoring->id) }}" method="POST" style="display:inline;">
+																@csrf
+																@method('DELETE')
+																<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
+															</form>
+														</td>
+													</tr>
+													@endforeach
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+					</div>
+					<div class="col-12 col-md-12 col-lg-6 order-1 order-md-2">
+
+
+
+						<div class="row">
+							<div class="col-12 col-md-12 col-lg-6 order-1 order-md-2">
+								<h5 class="mt-0 text-muted"> Daftar Nama Anggota</h5>
+								<table id="example2" class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>Nama</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php $nomer = 1; ?>
+										@foreach($persons as $person)
+										<tr>
+											<th>{{ $nomer++}}</th>
+											<td> {{ $person->name}} </td>
+										</tr>
+										@endforeach 
+									</tbody>
+								</table>
+							</div>
+							<div class="col-12 col-md-12 col-lg-6 order-1 order-md-2">
+								<h5 class="mt-0 text-muted"> Daftar Alat</h5>
+								<table id="example3" class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>Nama</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php $nomer = 1; ?>
+										@foreach($tools as $tool)
+										<tr>
+											<th>{{ $nomer++}}</th>
+											<td> {{ $tool->name}} </td>
+										</tr>
+										@endforeach 
+									</tbody>
+								</table>
+							</div>
+
 						</div>
 						<div class="col-12 col-md-12 col-lg-6 order-1 order-md-2">
-							<h5 class="mt-5 text-muted"> Daftar Alat</h5>
-							<table id="example3" class="table table-bordered table-striped">
+							<h5 class="mt-5 text-muted"> Daftar Perlengkapan</h5>
+							<table id="example4" class="table table-bordered table-striped">
 								<thead>
 									<tr>
 										<th>No</th>
@@ -217,25 +315,30 @@
 								</thead>
 								<tbody>
 									<?php $nomer = 1; ?>
-									@foreach($tools as $tool)
+									<?php $nomer = 1; ?>
+									@php
+									$cv = explode(",", $tools2);
+									@endphp
+									@foreach($tools2 as $tool2)
+									@foreach(explode(",", $tool2->name) as $name)
 									<tr>
 										<th>{{ $nomer++}}</th>
-										<td> {{ $tool->name}} </td>
+										<td> {{ $name}} </td>
 									</tr>
 									@endforeach 
+									@endforeach
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!-- /.card-body -->
 		</div>
-		<!-- /.card-body -->
-	</div>
-	<!-- /.card -->
+		<!-- /.card -->
 
-</section>
-<!-- /.content -->
+	</section>
+	<!-- /.content -->
 
 
 
@@ -243,4 +346,4 @@
 
 
 
-@endsection
+	@endsection

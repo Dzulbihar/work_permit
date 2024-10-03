@@ -82,7 +82,7 @@
 										    </a> -->
 										@endif
 
-									    <a href="{{route('job_desc.detail', $job->id)}}" class="btn btn-info btn-sm m-1" title="Daftar Anggota dan Alat">
+									    <a href="{{route('job_desc.detail', $job->id)}}" class="btn btn-info btn-sm m-1" title="Detailt">
 									        <i class="fas fa-clipboard-list"></i>
 									    </a>
 									    

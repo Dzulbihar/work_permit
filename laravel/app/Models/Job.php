@@ -61,4 +61,10 @@ class Job extends Model
     {
         return $this->hasMany(Tool2::class);
     }
+
+    public function monitorings()
+    {
+        return $this->hasMany(Monitoring::class);
+    }
+
 }
